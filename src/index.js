@@ -1,7 +1,8 @@
 const express = require('express');
 const connect = require('./config/database');
 
-const TweetRepository = require('./repository/tweet-repository')
+const TweetRepository = require('./repository/tweet-repository');
+const Comment = require('./models/comment');
 
 const app = express();
 
@@ -37,12 +38,24 @@ app.listen(PORT, async ()=>{
 
     // const tweet = await tweetRepo.update('647857483b95dc3823488ea1',{content : 'Now Ill be returned aasssaqs'});
 
-    const tweet = await tweetRepo.create({content : 'Tweet with comments'});
-    console.log(tweet);
-    tweet.comments.push({content : 'First Comment'});
-    tweet.save();
-    console.log(tweet);
+    // const tweet = await tweetRepo.create({content : 'Tweet with comments'});
+    // console.log(tweet);
+    // tweet.comments.push({content : 'First Comment'});
+    // tweet.save();
+    // console.log(tweet);
 
+    // const tweet = await tweetRepo.create({content : 'Tweet with comment Schema'});
+    // console.log(tweet);
+    
+    // const comment = await Comment.create({content : 'New Comment'});
+
+    // tweet.comments.push(comment);
+
+    // await tweet.save();
+    // console.log(tweet);
+
+    const tweet = await tweetRepo.getWithComments('648047ebf37fe2376cefb7dd');
+    console.log(tweet);
 
 
 
