@@ -22,10 +22,20 @@ class TweetRepository{
         }
     }
 
+    async getAll(limit,offset){
+        try{
+            const tweet = Tweet.find().skip(offset).limit(limit);
+            return tweet;
+        }catch(error){
+            console.log(error);
+            
+        }
+    }
+
     
     async getWithComments(id){
         try{
-            const tweet = Tweet.findById(id).populate('comments');
+            const tweet = Tweet.findById(id).populate('comments').lean();
             return tweet;
         }catch(error){
             console.log(error);

@@ -45,7 +45,7 @@ app.listen(PORT, async ()=>{
     // console.log(tweet);
 
     // const tweet = await tweetRepo.create({content : 'Tweet with comment Schema'});
-    // console.log(tweet);
+    // console.log(tweet);  
     
     // const comment = await Comment.create({content : 'New Comment'});
 
@@ -54,8 +54,16 @@ app.listen(PORT, async ()=>{
     // await tweet.save();
     // console.log(tweet);
 
-    const tweet = await tweetRepo.getWithComments('648047ebf37fe2376cefb7dd');
-    console.log(tweet);
+    // const tweet = await tweetRepo.getWithComments('648047ebf37fe2376cefb7dd');
+
+    const tweet = await tweetRepo.getAll(0,0);
+
+
+    console.log(tweet[0].contentWithEmail);
+
+
+
+
 
 
 
